@@ -1,6 +1,5 @@
 import { modifier } from 'ember-modifier';
-const cv = window.cv;
-const jspdf = window.jspdf;
+
 export default modifier(function initScanner(element) {
     // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // State
@@ -201,6 +200,7 @@ export default modifier(function initScanner(element) {
     // OpenCV: detect 4-corner document
     // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     function detectDocumentCorners(canvas) {
+        const cv = window.cv;
         let src, gray, blurred, edges, dilated, kernel, contours, hierarchy;
         try {
             src = cv.imread(canvas);
@@ -486,6 +486,7 @@ export default modifier(function initScanner(element) {
         }
         showLoading('Cropping & enhancingâ€¦');
         setTimeout(() => {
+            const cv = window.cv;
             let src, srcPts, dstPts, M, warped, brightened, kernel, sharpened;
             try {
                 const srcCanvas = document.createElement('canvas');
@@ -615,7 +616,7 @@ export default modifier(function initScanner(element) {
         showLoading('Generating PDFâ€¦');
         setTimeout(() => {
             try {
-                const { jsPDF } = jspdf;
+                const { jsPDF } = window.jspdf;
                 const quality = selectedQuality === 'ultra' ? 1.0 : selectedQuality === 'high' ? 0.95 : 0.85;
                 const imgData = resultCanvas.toDataURL('image/jpeg', quality);
                 const cW = resultCanvas.width;
@@ -770,7 +771,7 @@ export default modifier(function initScanner(element) {
     function waitForCv(cb) {
         const check = () => {
             try {
-                if (typeof cv !== 'undefined' && cv.Mat) {
+                if (typeof window.cv !== 'undefined' && window.cv.Mat) {
                     cvReady = true;
                     cb();
                 }
