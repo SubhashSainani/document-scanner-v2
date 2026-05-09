@@ -21,13 +21,12 @@ Built with Vanilla TypeScript, Vite, and OpenCV.js.
 
 ---
 
+
 ## Screenshots
 
-> Add screenshots here after deployment.
-
-| Home Screen | Camera View | Corner Adjust | Result |
-|-------------|-------------|---------------|--------|
-| _(screenshot)_ | _(screenshot)_ | _(screenshot)_ | _(screenshot)_ |
+| Home Screen | Camera View | Corner Adjust | Result | Export | Output |
+|-------------|-------------|---------------|--------|--------|--------|
+| ![Home Screen](screenshots/1.jpeg) | ![Camera View](screenshots/2.jpeg) | ![Corner Adjust](screenshots/3.jpeg) | ![Result](screenshots/4.jpeg) | ![Export PDF](screenshots/5.jpeg) | ![Output](screenshots/6.jpeg) |
 
 ---
 
