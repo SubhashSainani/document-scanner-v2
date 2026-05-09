@@ -1,27 +1,18 @@
-# Dependencies
-node_modules/
+# compiled output
+/dist/
+/tmp/
 
-# Build output
-dist/
+# dependencies
+/node_modules/
 
-# OS files
-.DS_Store
-Thumbs.db
+# misc
+*.local
+/.pnp*
+/.eslintcache
+/coverage/
+/npm-debug.log*
+/testem.log
+/yarn-error.log
 
-# Editor directories
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Environment files
-.env
-.env.local
-.env.*.local
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# broccoli-debug
+/DEBUG/
