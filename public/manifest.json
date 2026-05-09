@@ -1,0 +1,20 @@
+{
+  "name": "Document Scanner",
+  "short_name": "Scanner",
+  "description": "Mobile-friendly document scanner with real-time edge detection, perspective correction, and PDF export.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": []
+}
