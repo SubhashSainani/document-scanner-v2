@@ -1,18 +1,7 @@
-# compiled output
-/dist/
-/tmp/
-
-# dependencies
-/node_modules/
-
-# misc
-*.local
-/.pnp*
-/.eslintcache
-/coverage/
-/npm-debug.log*
-/testem.log
-/yarn-error.log
-
-# broccoli-debug
-/DEBUG/
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+.env
+.env.local
+*.log
