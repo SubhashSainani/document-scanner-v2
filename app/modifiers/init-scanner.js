@@ -212,8 +212,24 @@ export default modifier(function initScanner(element) {
             contours = new cv.MatVector();
             hierarchy = new cv.Mat();
             cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
-            cv.GaussianBlur(gray, blurred, new cv.Size(5, 5), 0);
-            cv.Canny(blurred, edges, 50, 150);
+            
+            // Determine if the background is light or dark
+            const meanVal = cv.mean(gray)[0];
+            const isLightBackground = meanVal > 150;
+
+            if (isLightBackground) {
+                // Light background strategy
+                // Enhance contrast to highlight faint document shadows
+                cv.normalize(gray, blurred, 0, 255, cv.NORM_MINMAX);
+                cv.GaussianBlur(blurred, blurred, new cv.Size(5, 5), 0);
+                // Lower Canny thresholds for low-contrast edges
+                cv.Canny(blurred, edges, 20, 80);
+            } else {
+                // Dark background strategy (current)
+                cv.GaussianBlur(gray, blurred, new cv.Size(5, 5), 0);
+                cv.Canny(blurred, edges, 50, 150);
+            }
+
             cv.dilate(edges, dilated, kernel);
             cv.findContours(dilated, contours, hierarchy, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE);
             const imgArea = canvas.width * canvas.height;
